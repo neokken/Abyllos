@@ -1,0 +1,3 @@
+[submodule "ElderEngine/vendor/spdlog"]
+	path = ElderEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
