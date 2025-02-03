@@ -1,5 +1,7 @@
 #include "Application.h"
 
+#include "Elder/Events/MouseEvent.h"
+#include "Elder/Log.h"
 
 namespace Elder
 {
@@ -13,6 +15,9 @@ namespace Elder
 
 	void Application::Run()
 	{
+		MouseMovedEvent e(200.f,200.f);
+		ELD_TRACE(e);
+
 		while (true);
 	}
 
