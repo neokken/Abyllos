@@ -37,8 +37,6 @@ project "ElderEngine"
 	}
 
 
-	libdirs { "%{prj.name}/vendor/glfw/lib/Debug" }
-
 	
 	filter "system:windows"
 		cppdialect "C++17"
