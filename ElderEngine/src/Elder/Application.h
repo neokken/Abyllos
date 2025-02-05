@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Elder/Core.h"
+#include "LayerStack.h"
 #include "Elder/Window.h"
+#include "Elder/Events/ApplicationEvent.h"
 
 namespace Elder
 {
@@ -16,6 +18,9 @@ namespace Elder
 
 		ELDER_API void OnEvent(Event& e);
 
+		ELDER_API void PushLayer(Layer* layer);
+		ELDER_API void PushOverlay(Layer* layer);
+
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
@@ -23,6 +28,8 @@ namespace Elder
 	private:
 		std::unique_ptr<Window> m_Window;
 		bool m_Running{ true };
+
+		LayerStack m_LayerStack;
 	};
 
 	// To be defined in client
