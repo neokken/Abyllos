@@ -1,14 +1,10 @@
 #pragma once
 
+#include "eldpch.h"
 #include "Elder/Core.h"
-
-
-#include <string>
-#include <functional>
 
 namespace Elder
 {
-
 	enum class EventType
 	{
 		None = 0,

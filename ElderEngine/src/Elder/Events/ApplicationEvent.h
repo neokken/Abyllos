@@ -1,10 +1,7 @@
 #pragma once
 #pragma once
 
-#include "Elder/Core.h"
 #include "Elder/Events/Event.h"
-
-#include <sstream>
 
 namespace Elder
 {

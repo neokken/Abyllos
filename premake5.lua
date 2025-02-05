@@ -17,7 +17,11 @@ project "ElderEngine"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	
 	buildoptions { "/utf-8" }
+
+	pchheader "eldpch.h"
+	pchsource "ElderEngine/src/eldpch.cpp"
 
 	files
 	{
@@ -28,13 +32,18 @@ project "ElderEngine"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/glfw/include"
 	}
 
+
+	libdirs { "%{prj.name}/vendor/glfw/lib/Debug" }
+
+	
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
+		staticruntime "Off"
 
 		defines
 		{
@@ -47,17 +56,41 @@ project "ElderEngine"
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Abyllos")
 		}
 
+		
+
 	filter "configurations:Debug"
 		defines "ELD_DEBUG"
 		symbols "On"
+		libdirs { "%{prj.name}/vendor/glfw/lib/Debug" }
+		links 
+		{ 
+			"glfw3",
+			"opengl32.lib",
+			"dwmapi.lib"
+		}
+
 
 	filter "configurations:Release"
 		defines "ELD_RELEASE"
 		optimize "On"
+		libdirs { "%{prj.name}/vendor/glfw/lib/Release" }
+		links 
+		{ 
+			"glfw3",
+			"opengl32.lib",
+			"dwmapi.lib"
+		}
 
 	filter "configurations:Dist"
 		defines "ELD_DIST"
 		optimize "On"
+		libdirs { "%{prj.name}/vendor/glfw/lib/Release" }
+		links 
+		{ 
+			"glfw3",
+			"opengl32.lib",
+			"dwmapi.lib"
+		}
 
 
 
@@ -66,6 +99,7 @@ project "Abyllos"
 	location "Abyllos"
 	kind "ConsoleApp"
 	language "C++"
+
 	buildoptions { "/utf-8" }
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -91,8 +125,8 @@ project "Abyllos"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
+		staticruntime "Off"
 
 		defines
 		{
