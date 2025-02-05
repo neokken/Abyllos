@@ -6,7 +6,7 @@
 
 namespace Elder
 {
-	class WindowsWindow : public Window
+	class  WindowsWindow : public Window
 	{
 	public:
 		WindowsWindow(const WindowProperties& props);

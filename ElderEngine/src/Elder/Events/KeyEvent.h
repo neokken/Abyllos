@@ -39,10 +39,10 @@ namespace Elder
 	};
 
 	
-	class ELDER_API KeyReleased : public KeyEvent
+	class ELDER_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleased(int keyCode)
+		KeyReleasedEvent(int keyCode)
 			: KeyEvent(keyCode) {}
 
 		std::string ToString() const
