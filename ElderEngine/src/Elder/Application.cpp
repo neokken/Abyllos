@@ -8,6 +8,7 @@ namespace Elder
 {
 	Application::Application()
 	{
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -16,10 +17,11 @@ namespace Elder
 
 	void Application::Run()
 	{
-		MouseMovedEvent e(200.f,200.f);
-		ELD_TRACE(e);
+		while (m_Running)
+		{
 
-		while (true);
+			m_Window->OnUpdate();
+		}
 	}
 
 }

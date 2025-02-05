@@ -1,17 +1,22 @@
 #pragma once
 
 #include "Elder/Core.h"
+#include "Elder/Window.h"
 
 namespace Elder
 {
 
-	class ELDER_API Application
+	class Application
 	{
 	public:
-		Application();
-		virtual ~Application();
+		ELDER_API Application();
+		ELDER_API virtual ~Application();
 
-		void Run();
+		ELDER_API void Run();
+
+	private:
+		std::unique_ptr<Window> m_Window;
+		bool m_Running{ true };
 	};
 
 	// To be defined in client

@@ -22,9 +22,6 @@ namespace Elder
 		bool IsVSync() const override { return m_WindowData.VSync; }
 
 	private:
-		virtual void Init(const WindowProperties& props);
-		virtual void Shutdown();
-	private:
 		GLFWwindow* m_Window;
 
 		struct WindowData
