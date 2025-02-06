@@ -5,6 +5,8 @@
 #include "Elder/Events/MouseEvent.h"
 #include "Elder/Events/KeyEvent.h"
 
+#include <glad/glad.h>
+
 namespace Elder
 {
 	static bool s_GLFWInitialized = false;
@@ -36,6 +38,10 @@ namespace Elder
 			m_WindowData.Title.c_str(), nullptr, nullptr);
 
 		glfwMakeContextCurrent(m_Window);
+
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		ELD_CORE_ASSERT(status, "Failed to initialize glad! ");
+
 		glfwSetWindowUserPointer(m_Window, &m_WindowData);
 		SetVSync(true);
 
@@ -128,6 +134,7 @@ namespace Elder
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
+
 		glfwSwapBuffers(m_Window);
 	}
 

@@ -10,6 +10,13 @@ workspace "Abyllos"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+
+IncludeDir = {}
+IncludeDir["Glad"] = "ElderEngine/vendor/Glad/include"
+
+include "ElderEngine/vendor/Glad"
+
+
 project "ElderEngine"
 	location "ElderEngine"
 	kind "SharedLib"
@@ -33,7 +40,8 @@ project "ElderEngine"
 	{
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/glfw/include"
+		"%{prj.name}/vendor/glfw/include",
+		"%{IncludeDir.Glad}"
 	}
 
 
@@ -46,7 +54,8 @@ project "ElderEngine"
 		defines
 		{
 			"ELD_PLATFORM_WINDOWS",
-			"ELD_BUILD_DLL"
+			"ELD_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
@@ -64,7 +73,8 @@ project "ElderEngine"
 		{ 
 			"glfw3",
 			"opengl32.lib",
-			"dwmapi.lib"
+			"dwmapi.lib",
+			"Glad"
 		}
 
 
@@ -76,7 +86,8 @@ project "ElderEngine"
 		{ 
 			"glfw3",
 			"opengl32.lib",
-			"dwmapi.lib"
+			"dwmapi.lib",
+			"Glad"
 		}
 
 	filter "configurations:Dist"
@@ -87,7 +98,8 @@ project "ElderEngine"
 		{ 
 			"glfw3",
 			"opengl32.lib",
-			"dwmapi.lib"
+			"dwmapi.lib",
+			"Glad"
 		}
 
 
