@@ -21,7 +21,8 @@ namespace Elder
 		ELDER_API void PushLayer(Layer* layer);
 		ELDER_API void PushOverlay(Layer* layer);
 
-
+		ELDER_API static Application& GetApplication() { return *s_Instance; }
+		ELDER_API Window& GetWindow() { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
@@ -30,6 +31,9 @@ namespace Elder
 		bool m_Running{ true };
 
 		LayerStack m_LayerStack;
+
+	private:
+		static Application* s_Instance;
 	};
 
 	// To be defined in client

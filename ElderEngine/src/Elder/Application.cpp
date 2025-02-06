@@ -3,14 +3,21 @@
 
 #include "Elder/Events/MouseEvent.h"
 #include "Elder/Log.h"
+#include "glad/glad.h"
 
 namespace Elder
 {
 
 #define BIND_EVENT_FN(x) std::bind(&x, this,  std::placeholders::_1)
 
+
+	Application* Application::s_Instance = nullptr;
+
 	Application::Application()
 	{
+		ELD_CORE_ASSERT(!s_Instance, "Application already exists!");
+		s_Instance = this;
+
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(BIND_EVENT_FN(Application::OnEvent));
 	}
@@ -23,7 +30,8 @@ namespace Elder
 	{
 		while (m_Running)
 		{
-
+			glClear(GL_COLOR_BUFFER_BIT);
+			
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();

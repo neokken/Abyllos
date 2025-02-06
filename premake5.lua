@@ -13,9 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["Glad"] = "ElderEngine/vendor/Glad/include"
+IncludeDir["ImGui"] = "ElderEngine/vendor/imgui"
 
 include "ElderEngine/vendor/Glad"
-
+include "ElderEngine/vendor/imgui"
 
 project "ElderEngine"
 	location "ElderEngine"
@@ -41,7 +42,8 @@ project "ElderEngine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/glfw/include",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 
@@ -74,7 +76,8 @@ project "ElderEngine"
 			"glfw3",
 			"opengl32.lib",
 			"dwmapi.lib",
-			"Glad"
+			"Glad",
+			"ImGui"
 		}
 
 
@@ -87,7 +90,8 @@ project "ElderEngine"
 			"glfw3",
 			"opengl32.lib",
 			"dwmapi.lib",
-			"Glad"
+			"Glad",
+			"ImGui"
 		}
 
 	filter "configurations:Dist"
@@ -99,7 +103,8 @@ project "ElderEngine"
 			"glfw3",
 			"opengl32.lib",
 			"dwmapi.lib",
-			"Glad"
+			"Glad",
+			"ImGui"
 		}
 
 

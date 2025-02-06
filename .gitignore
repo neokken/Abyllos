@@ -10,6 +10,13 @@
 bin/
 bin-int/
 
+
+
+
+# imgui
+imgui.ini
+
+
 # Visual Studio cache and logs
 .vscode/
 .vs/

@@ -20,3 +20,5 @@
 	#define ELD_ASSERT(x, ...)
 	#define ELD_CORE_ASSERT(x, ...)
 #endif 
+
+#define ELD_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)

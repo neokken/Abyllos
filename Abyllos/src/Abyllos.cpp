@@ -10,11 +10,11 @@ public:
 	}
 	void OnUpdate() override
 	{
-		ELD_INFO("ExampleLayer::Update");
+		//ELD_INFO("ExampleLayer::Update");
 	}
 	void OnEvent(Elder::Event& event) override
 	{
-		ELD_TRACE("{0}", event);
+		//ELD_TRACE("{0}", event);
 	}
 };
 
@@ -26,6 +26,7 @@ public:
 	Abyloss() 
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new Elder::ImGuiLayer());
 	}
 	~Abyloss() {}
 

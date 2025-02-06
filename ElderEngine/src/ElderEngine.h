@@ -4,6 +4,8 @@
 #include "Elder/Layer.h"
 #include "Elder/Log.h"
 
+#include "Elder/ImGui/ImGuiLayer.h"
+
 // ====== ENTRY POINT ===============
 #include "Elder/EntryPoint.h"
 // ==================================
