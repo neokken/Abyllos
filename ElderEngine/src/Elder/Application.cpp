@@ -36,6 +36,8 @@ namespace Elder
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
+			auto [x, y] = Input::GetMousePosition();
+
 			m_Window->OnUpdate();
 		}
 	}

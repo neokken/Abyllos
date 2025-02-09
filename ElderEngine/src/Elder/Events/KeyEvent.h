@@ -1,20 +1,21 @@
 #pragma once
 
 #include "Elder/Events/Event.h"
+#include "Elder/KeyCodes.h"
 
 namespace Elder
 {
 	class ELDER_API KeyEvent : public Event
 	{
 	public:
-		int GetKeyCode() const { return m_KeyCode; }
+		ELD_KEY GetKeyCode() const { return m_KeyCode; }
 
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
 		KeyEvent(int keyCode) : m_KeyCode{ keyCode } {}
 
-		int m_KeyCode;
+		ELD_KEY m_KeyCode;
 	};
 
 
@@ -29,7 +30,7 @@ namespace Elder
 		std::string ToString() const 
 		{
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_Repeating << " repeats)";
+			ss << "KeyPressedEvent: " << static_cast<int>(m_KeyCode) << " (" << m_Repeating << " repeats)";
 			return ss.str();
 		}
 
@@ -48,7 +49,7 @@ namespace Elder
 		std::string ToString() const
 		{
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_KeyCode;
+			ss << "KeyPressedEvent: " << static_cast<int>(m_KeyCode);
 			return ss.str();
 		}
 
@@ -65,7 +66,7 @@ namespace Elder
 		std::string ToString() const
 		{
 			std::stringstream ss;
-			ss << "KeyTypedEvent: " << m_KeyCode;
+			ss << "KeyTypedEvent: " << static_cast<int>(m_KeyCode);
 			return ss.str();
 		}
 

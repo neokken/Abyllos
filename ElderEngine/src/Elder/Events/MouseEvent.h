@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Elder/Events/Event.h"
+#include "Elder/MouseButtonCodes.h"
 
 namespace Elder
 {
@@ -57,14 +58,14 @@ namespace Elder
 	class ELDER_API MouseButtonEvent : public Event
 	{
 	public:
-		int GetButton() const { return m_Button; }
+		ELD_MOUSE GetButton() const { return m_Button; }
 
 
 		EVENT_CLASS_CATEGORY(EventCategoryMouseButton | EventCategoryMouse | EventCategoryInput)
 	protected:
 		MouseButtonEvent(int button) : m_Button{ button } {}
 
-		int m_Button;
+		ELD_MOUSE m_Button;
 	};
 
 
@@ -77,7 +78,7 @@ namespace Elder
 		std::string ToString() const
 		{
 			std::stringstream ss;
-			ss << "MousePressedEvent: " << m_Button;
+			ss << "MousePressedEvent: " << static_cast<int>(m_Button);
 			return ss.str();
 		}
 
@@ -94,7 +95,7 @@ namespace Elder
 		std::string ToString() const
 		{
 			std::stringstream ss;
-			ss << "MouseButtonReleasedEvent: " << m_Button;
+			ss << "MouseButtonReleasedEvent: " << static_cast<int>(m_Button);
 			return ss.str();
 		}
 

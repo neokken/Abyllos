@@ -21,6 +21,7 @@ namespace Elder
 		void SetVSync(bool enable) override;
 		bool IsVSync() const override { return m_WindowData.VSync; }
 
+		void* GetNativeWindow() const override { return m_Window; }
 	private:
 		GLFWwindow* m_Window;
 
